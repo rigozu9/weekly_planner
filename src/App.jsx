@@ -1,25 +1,17 @@
-import { useState, useEffect } from "react"
-import axios from 'axios'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
 
 const App = () => {
-  const [greeting, setGreeting] = useState("")
+    return (
+      <Router>
+        <div className="container">
+          <h1>Study plan app</h1>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </div>
+      </Router>
+    )
+  }
 
-  useEffect (() => {
-    const fetchGreeting = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000")
-        setGreeting(res.data)
-      } catch (e) {
-        console.error("There was an error!", e)
-      }
-    }
-
-    fetchGreeting()
-  }, [])
-
-  return (
-    <div>{greeting}</div>
-  )
-}
-
-export default App
+  export default App
