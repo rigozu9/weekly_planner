@@ -1,24 +1,25 @@
-import { useState, useEffect } from "react"
-import axios from 'axios'
+import { Button, Typography, Container, Box } from '@mui/material'
 
 const Home = () => {
-  const [plans, setPlans] = useState("")
-
-  useEffect (() => {
-    const fetchPlans = async () => {
-      try {
-        const res = await axios.get("http://localhost:3000/plans")
-        setPlans(res.data)
-      } catch (e) {
-        console.error("There was an error!", e)
-      }
-    }
-
-    fetchPlans()
-  }, [])
-
   return (
-    <div>{plans}</div>
+    <Container maxWidth="sm">
+        <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            height="100vh"
+            textAlign="center"
+        >
+            <Typography variant="h3" component="h1" gutterBottom>
+                Welcome to study plan app
+            </Typography>
+            <Button variant="contained" color="primary" size="large">
+                Get started
+            </Button>
+        </Box>
+
+    </Container>
   )
 }
 

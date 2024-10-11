@@ -1,16 +1,25 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material/styles'
+import { GlobalStyles } from '@mui/material'
 import Home from './components/Home'
+import theme from './themes'
 
 const App = () => {
     return (
-      <Router>
-        <div className="container">
-          <h1>Study plan app</h1>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles
+          styles={{
+            body: { backgroundColor: theme.palette.background.default },
+          }}
+        />
+        <Router>
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </div>
+        </Router>
+      </ThemeProvider>
     )
   }
 
